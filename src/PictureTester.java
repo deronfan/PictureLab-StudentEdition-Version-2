@@ -23,7 +23,7 @@ public class PictureTester {
 		 * 
 		 */
 		 // testZeroBlue();
-		testKeepOnlyBlue();
+		 // testKeepOnlyBlue();
 		// testKeepOnlyRed();
 		// testKeepOnlyGreen();
 		// testNegate();
@@ -42,8 +42,8 @@ public class PictureTester {
 		// testChromakey();
 		// testEncodeAndDecode(); // use png, gif or bmp because of compression
 		// testGetCountRedOverValue(250);
-		// testSetRedToHalfValueInTopHalf();
-		// testClearBlueOverValue(200);
+		//  testSetRedToHalfValueInTopHalf();
+		testClearBlueOverValue(200);
 		// Color avgColor = testGetAverageForColumn(pic, col);// specified column
 		// testDiagonal();
 		// testQuads();
@@ -106,9 +106,9 @@ public class PictureTester {
 	private static void testKeepOnlyBlue() {
 		// should get a fairly blue pic
 		// this method will look a lot like testZeroBlue method
-		Picture beach = new Picture("beach.jpg");// You would change the var name and file name to your picture when you are testing your image.
+		Picture beach = new Picture("images/selfie.jpg");// You would change the var name and file name to your picture when you are testing your image.
     Picture sBeach = beach.scale(0.5,0.5);// scales the size down if you need to resize.
-    sBeach.write("sBeach.jpg");
+    sBeach.write("images/selfie.jpg");
     //Code below is necessary to make your image smaller if you took it from your camera.
   
     
@@ -134,7 +134,7 @@ public class PictureTester {
 	 * used often, we can write these algorithms in this class.
 	 */
 	private static void testNegate() {
-		Picture swan = new Picture("swan.jpg");
+		Picture swan = new Picture("images/selfie.jpg");
 		// write this in Picture class
 		swan.negate();
 		swan.explore();
@@ -146,7 +146,7 @@ public class PictureTester {
 	 * to the Picture class.
 	 */
 	private static void testGrayscale() {
-		Picture swan = new Picture("swan.jpg");
+		Picture swan = new Picture("images/self.jpg");
 		// write this method in Picture class
 		swan.grayScale();
 		swan.explore();
@@ -156,12 +156,11 @@ public class PictureTester {
 	/** Method to test edgeDetection */
 	public static void testEdgeDetection() {
 
-		Picture swan = new Picture("swan.jpg");
+		Picture swan = new Picture("images/selfie.jpg");
 
 		// written in Picture class
 		swan.edgeDetection(10);// bigger number means fewer edges
 		swan.explore();
-		swan.write("swan outline.jpg");// writes the new picture to a new file
 	}
 
 	/** Method to test mirrorVertical */
@@ -232,19 +231,25 @@ public class PictureTester {
 	// so for this one, any pixels that have blue over a certain value are set
 	// to no blue at all. Or for a different effect, have those pixels set to black.
 	private static void testClearBlueOverValue(int i) {
-
+		Picture pic = new Picture("images/selfie.jpg");
+		pic.clearBlueOverValue(i);
+		pic.explore();
 	}
 
 	// goes to each pixel in the top half and cuts the red component in half
 	// So, bottom half of pic should look normal
 	private static void testSetRedToHalfValueInTopHalf() {
+		Picture pic = new Picture("images/selfie.jpg");
+		pic.setRedToHalfValueInTopHalf();
+		pic.explore();
 
 	}
 
 	// displays the number of pixels in the pic that have a red component
 	// greater than the specifies int.
 	private static void testGetCountRedOverValue(int i) {
-
+		Picture pic = new Picture("images/selfie.jpg");
+		System.out.println(pic.getCountRedOverValue(i));
 	}
 
 	/**
@@ -364,6 +369,7 @@ public class PictureTester {
 	 */
 	private static void testFixUnderwater() {
 		Picture pic = new Picture("water.jpg");
+		pic.fixUnderwater();
 		pic.explore();
 	}
 
